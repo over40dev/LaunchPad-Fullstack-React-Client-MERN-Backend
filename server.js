@@ -2,12 +2,16 @@ const express = require('express');
 const dotenv = require('dotenv');
 const colors = require('colors');
 const morgan = require('morgan');
+const transactions = require('./routes/transactions');
 
 dotenv.config({path: './config/config.env'});
 
 const app = express();
 
-app.get('/', (req, res) => res.send('Hello'));
+// attach 'route' to what we want app to do when user hits this route.
+app.use('/api/v1/transactions', transactions);
+
+app.get('/', (req, res) => res.send('Hello World!'));
 
 const PORT = process.env.PORT || 5000;
 
