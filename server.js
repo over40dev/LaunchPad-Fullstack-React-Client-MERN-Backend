@@ -11,6 +11,9 @@ connectDB();
 
 const app = express();
 
+// don't forget ` () ` after 'json'
+app.use(express.json()); 
+
 // attach 'route' to what we want app to do when user hits this route.
 app.use('/api/v1/transactions', transactions);
 
