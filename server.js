@@ -14,6 +14,11 @@ const app = express();
 // don't forget ` () ` after 'json'
 app.use(express.json()); 
 
+// morgan -- show 'method, etc' in development
+if (process.env.NODE_ENV === 'development') {
+  app.use(morgan('dev'));
+}
+
 // attach 'route' to what we want app to do when user hits this route.
 app.use('/api/v1/transactions', transactions);
 
